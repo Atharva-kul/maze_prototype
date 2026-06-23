@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bgiqlv2kr3ftq"]
+
+[ext_resource type="Script" uid="uid://bb5p5k4yt3q0i" path="res://scripts/maze_generator.gd" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://dt8n3366iw4b4" path="res://assets/wall_path.png" id="2_0e48y"]
+[ext_resource type="PackedScene" uid="uid://dut1awugd8hr7" path="res://scenes/chara.tscn" id="3_q6r6c"]
+[ext_resource type="PackedScene" uid="uid://cqfsbdepu72lu" path="res://scenes/enemy.tscn" id="4_kdubu"]
+[ext_resource type="PackedScene" uid="uid://cvlfesl3hdgri" path="res://scenes/coin.tscn" id="5_d21ai"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epypp"]
+texture = ExtResource("2_0e48y")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0hol4"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_epypp")
+
+[node name="maze" type="Node2D" unique_id=364449410]
+position = Vector2(5, 6)
+script = ExtResource("1_wtcfe")
+
+[node name="Health" type="Label" parent="." unique_id=659951704]
+offset_left = -103.0
+offset_top = 4.0
+offset_right = -47.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 16
+text = "Health:"
+
+[node name="points" type="Label" parent="." unique_id=1540997018]
+offset_left = -103.0
+offset_top = 24.0
+offset_right = -50.0
+offset_bottom = 47.0
+text = "Points:"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1089447481]
+tile_set = SubResource("TileSet_0hol4")
+
+[node name="Button" type="Button" parent="." unique_id=1754919581]
+offset_left = 32.0
+offset_top = 4.0
+offset_right = 175.0
+offset_bottom = 35.0
+text = "Randomized map"
+metadata/_edit_use_anchors_ = true
+
+[node name="Chara" parent="." unique_id=137693098 instance=ExtResource("3_q6r6c")]
+position = Vector2(42, 42)
+
+[node name="enemy" parent="." unique_id=865697482 instance=ExtResource("4_kdubu")]
+position = Vector2(47.333332, 70.66667)
+
+[node name="coin" parent="." unique_id=929330636 instance=ExtResource("5_d21ai")]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

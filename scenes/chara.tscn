@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dut1awugd8hr7"]
+
+[ext_resource type="Script" uid="uid://boijw2dmtkbkn" path="res://scripts/chara.gd" id="1_r4l3v"]
+[ext_resource type="Texture2D" uid="uid://dse6aq0u2ei13" path="res://assets/chara.png" id="2_tkaow"]
+[ext_resource type="Texture2D" uid="uid://b4eieqnn0xbes" path="res://assets/gun.png" id="3_tkaow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
+radius = 1.0
+
+[node name="Chara" type="CharacterBody2D" unique_id=137693098]
+scale = Vector2(7, 7)
+disable_mode = 2
+motion_mode = 1
+safe_margin = 0.75
+script = ExtResource("1_r4l3v")
+metadata/_edit_vertical_guides_ = [-30.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1996740521]
+scale = Vector2(0.14285715, 0.106000006)
+texture = ExtResource("2_tkaow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=726812458]
+y_sort_enabled = true
+position = Vector2(0, 0.14285713)
+shape = SubResource("CircleShape2D_0hol4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1755747531]
+position = Vector2(-0.6000023, 3.8146973e-06)
+scale = Vector2(0.99999994, 0.99999994)
+zoom = Vector2(2, 2)
+
+[node name="Gun" type="Sprite2D" parent="." unique_id=2051970019]
+position = Vector2(0.57142854, -1)
+scale = Vector2(0.0825893, 0.11160716)
+texture = ExtResource("3_tkaow")
+centered = false
+
+[node name="Nozzle" type="Marker2D" parent="Gun" unique_id=24473176]
+position = Vector2(29.4054, 7.679999)
